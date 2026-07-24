@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smooth Scroll Animation</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            /* The height controls how long the scroll is. 
+               1000vh means scrolling 10 times the window height */
+            height: 800vh;
+        }
+
+        canvas {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 100vw;
+            max-height: 100vh;
+            /* Object fit helps scale the image proportionally */
+            object-fit: contain;
+            /* Smooth resizing */
+            image-rendering: high-quality;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="animation-canvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('animation-canvas');
+        const context = canvas.getContext('2d');
+
+        // We have 300 frames: ezgif-frame-001.jpg to ezgif-frame-300.jpg
+        const frameCount = 300;
+        
+        // Pad the index with zeros (e.g., 1 -> 001)
+        const currentFrame = index => (
+            `ezgif-frame-${index.toString().padStart(3, '0')}.jpg`
+        );
+
+        // Preload all images to ensure smooth playback
+        const images = [];
+        for (let i = 1; i <= frameCount; i++) {
+            const img = new Image();
+            img.src = currentFrame(i);
+            images.push(img);
+        }
+
+        // Initialize canvas when the first frame is ready
+        images[0].onload = () => {
+            // Set canvas size to match image dimensions
+            canvas.width = images[0].naturalWidth;
+            canvas.height = images[0].naturalHeight;
+            context.drawImage(images[0], 0, 0);
+        };
+
+        let targetFrameIndex = 0;
+        let currentFrameIndex = 0;
+        const easing = 0.08; // Adjust this value to change the smoothness (0.01 - 0.1)
+
+        // Scroll event listener only updates the target frame
+        window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop;
+            const maxScrollTop = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollFraction = scrollTop / maxScrollTop;
+            
+            // Map progress to target frame index (0 to 299)
+            targetFrameIndex = Math.min(
+                frameCount - 1,
+                Math.floor(scrollFraction * frameCount)
+            );
+        });
+
+        // Continuous animation loop for smooth interpolation
+        function updateFrame() {
+            // Lerp (Linear interpolation) to ease towards the target frame
+            currentFrameIndex += (targetFrameIndex - currentFrameIndex) * easing;
+            
+            const frameToDraw = Math.round(currentFrameIndex);
+            
+            if (images[frameToDraw] && images[frameToDraw].complete) {
+                // Clear the canvas and draw the new interpolated frame
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(images[frameToDraw], 0, 0);
+            }
+            
+            // Keep the loop running
+            requestAnimationFrame(updateFrame);
+        }
+
+        // Start the animation loop
+        requestAnimationFrame(updateFrame);
+    </script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "name": "DeepSea Guardian",
+  "description": "A minimalist, beautifully reconstructed landing page banner for DeepSea Guardian, featuring clean layouts, custom interactive components, and elegant typography on a dark background.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
