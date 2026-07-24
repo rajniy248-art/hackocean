@@ -1,20 +1,57 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# 🌊 DeepSea — Ocean Intelligence & Bio-Telemetry Platform
 
-# Run and deploy your AI Studio app
+> **Hackathon 24-Hour Build** | Real-time Ocean Telemetry, SAR Satellite Analytics & Autonomous Marine Defense Swarms.
 
-This contains everything you need to run your app locally.
+---
 
-View your app in AI Studio: https://ai.studio/apps/e4a84ce4-2a73-414d-8636-e5f946a87111
+## 📌 Project Overview
+**DeepSea** is a real-time marine monitoring platform designed to detect sub-surface anomalies, illegal fishing, micro-plastic concentrations, oil spills, and coral bleaching using AI-synthesized telemetry from:
+- 🛰️ **Synthetic Aperture Radar (SAR) Satellites**
+- 🤖 **Autonomous Marine Drone Swarms**
+- 🔊 **IoT Ocean Acoustic Buoy Sensor Networks**
 
-## Run Locally
+---
 
-**Prerequisites:**  Node.js
+## ⚡ Tech Stack
+- **Frontend Framework**: React 18, Vite, TypeScript
+- **Styling**: Tailwind CSS, CSS Animations, Glassmorphism UI
+- **Icons & UI**: Lucide React
+- **Data Visualization**: Dynamic canvas canvas rendering & animated telemetry stream charts
 
+---
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js (v18+ recommended)
+- npm or bun
+
+### Local Setup
+```bash
+# Clone the repository
+git clone https://github.com/rajniy248-art/hackocean.git
+
+# Navigate into the project directory
+cd hackocean/website
+
+# Install dependencies
+npm install
+
+# Start local development server
+npm run dev
+```
+
+---
+
+## 🛠️ System Modules
+- `Header & Navigation`: Dynamic sticky top bar with live telemetry link routing.
+- `Threat Cards`: Live alert cards for illegal maritime activity & ocean hazards.
+- `IoT Sensor Node Grid`: Deep-sea acoustic buoy network streaming pressure, temperature, and salinity data.
+- `SAR Satellite Pipeline`: Multi-spectral synthetic radar visualization with AI anomaly scoring.
+- `Autonomous Drone Swarms`: Cooperative routing for autonomous surface & sub-surface vehicles.
+
+---
+
+## 🏆 Hackathon Submission Details
+- **Repository**: [https://github.com/rajniy248-art/hackocean](https://github.com/rajniy248-art/hackocean)
+- **Status**: Live Active Development 🚀
